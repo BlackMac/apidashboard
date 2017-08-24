@@ -1,0 +1,22 @@
+{{> header}}
+{{> menu}}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>Phone Numbers</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Number</th>
+                <th>Type</th>
+                <th>Number Alias</th>
+                <th>Endpoint</th>
+            </tr>
+            {{#numbers}}
+                <tr><td>{{localized}}</td><td>{{type}}</td><td>{{endpointAlias}}</td><td>{{endpointId}}</td>
+            {{/numbers}}
+        </table>
+        </div>
+    </div>
+</div>
+{{> footer}}

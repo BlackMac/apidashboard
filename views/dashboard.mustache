@@ -1,0 +1,60 @@
+{{> header}}
+{{> menu}}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>Dashboard</h3>
+        <p>
+            This is the sipgate developer dashboard. You can use it to control all aspects of the sipgate.io REST API, sipgate.io phone
+                        and sipgate.io webhooks.
+        </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default {{^apiClient}}panel-danger{{/apiClient}}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Api Client</h3>
+                </div>
+                <div class="panel-body">
+                {{#apiClient}}
+                    <span class="infolabel">Client:</span>{{name}}<br>
+                    <span class="infolabel">ID:</span>{{clientId}}<br>
+                    <span class="infolabel">Secret:</span>{{clientSecret}}<br>
+                    <span class="infolabel"></span><a href="/clients">more</a>
+                {{/apiClient}}
+                {{^apiClient}}
+                    <p>
+                        You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
+                    </p>
+                
+                    <a href="/clients" class="btn btn-primary">Create an API-Client</a>
+                {{/apiClient}}
+                </div>
+                <div class="panel-footer">
+                    API Calls we used in this box:<br><strong>GET</strong> /v2/authorization/oauth2/clients
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Account status</h3>
+                </div>
+                <div class="panel-body">
+                    <span class="infolabel">Customer:</span> {{masterSipId}}-{{webuser}}-{{domain}}<br>
+                    <span class="infolabel">Product:</span> {{product}}<br>
+                    <span class="infolabel">Admin:</span> {{admin}}<br>
+                    <span class="infolabel">Balance:</span> <span class="text-success">{{currency}}{{amount}}</span><br>
+                </div>
+                <div class="panel-footer">
+                    API Calls we used in this box:<br><strong>GET</strong> /v2/authorization/userinfo<br><strong>GET</strong> /v2/balance
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/static/prism.css">
+<script src="/static/prism.js"></script>
+{{> footer}}

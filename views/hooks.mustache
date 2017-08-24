@@ -1,0 +1,23 @@
+{{> header}}
+{{> menu}}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>Webhooks</h3>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Webhooks</h3>
+        </div>
+        <div class="panel-body">
+            <strong>Incoming:</strong> {{hooks.incomingUrl}}<br>
+            <strong>Outgoing:</strong> {{hooks.outgoingUrl}}
+        </div>
+        <div class="panel-footer">
+            API Calls we used in this box:<br><strong>GET</strong> /v2/settings/sipgateio
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+{{> footer}}

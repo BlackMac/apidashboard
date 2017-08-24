@@ -1,0 +1,34 @@
+<div class="nav-side-menu">
+    <div class="brand"><img src="/static/logo.png" style="width:32px; margin: 13px;"></div>
+    <i class="glyphicon glyphicon-menu-hamburger toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <a href="/">
+                <li class="{{#pageDashboard}}active{{/pageDashboard}}">
+                <i class="ti-dashboard"></i>Dashboard
+                </li>
+                </a>
+                <a href="/clients">
+                <li class="{{#pageClients}}active{{/pageClients}}">
+                <i class="ti-signal"></i>Clients
+                </li>
+                </a>
+                <a href="/phone">
+                <li class="{{#pagePhone}}active{{/pagePhone}}">
+                <i class="ti-headphone-alt"></i>Phone
+                </li>
+                </a>
+                <a href="/login">
+                <li class="{{#pageLogin}}active{{/pageLogin}}">
+                <i class="ti-power-off text-danger"></i>Logout
+                </li>
+                </a>
+            </ul>
+    </div>
+    <div class="menu-userinfo">
+        <img src="https://www.gravatar.com/avatar/{{user.gravatar}}" class="img-circle">{{user.firstname}} {{user.lastname}}<br>
+    </div>
+</div>
+    

@@ -1,0 +1,30 @@
+{{> header}}
+{{> menu}}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12"><br>
+        <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Fehler</h3>
+        </div>
+        <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <p>
+                An unknown Error occured. This should never happen, but in this case we forgot to write a user friendly error message.
+            </p>
+            <p>
+                We are very sorry about this incident and we will fix it ASAP. Our developers have been informed and we will send you
+                an email when we know more.
+            </p>
+            </div>
+        </div>
+            
+            <pre>{{error}}</pre>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+{{> footer}}

@@ -1,0 +1,63 @@
+{{> header}}
+{{> menu}}
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>sipgate.io phone</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default {{^apiClient}}panel-danger{{/apiClient}}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">sipgate.io phone HTML</h3>
+                </div>
+                <div class="panel-body">
+                {{#apiClient}}
+                    <p>
+                        You can use this code to integrate the sipgate.io phone into your website:
+                    </p>
+                    <pre><code class="language-html">&lt;script src="https://phone.sipgate.com/static/js/webphone.js">&lt;/script>
+&lt;div id='sipgate-webphone-container' style="height: 550px; width: 400px;">&lt;/div>
+&lt;script>
+  var webphone = new SipgateWebphone();
+  webphone.init({
+    container: document.getElementById('sipgate-webphone-container'),
+    clientId: '{{clientId}}'
+  });
+&lt;/script></code></pre>
+                {{/apiClient}}
+                {{^apiClient}}
+                    <p>
+                        You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
+                    </p>
+                
+                    <a href="/clients" class="btn btn-primary">Create an API-Client</a>
+                {{/apiClient}}
+                </div>
+                <div class="panel-footer">
+                    API Calls we used in this box:<br><strong>GET</strong> /v2/authorization/oauth2/clients
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/static/prism.css">
+<script src="/static/prism.js"></script>
+ <!--       {{#apiClient}}
+                    <span class="infolabel">Client:</span>{{name}}<br>
+                    <span class="infolabel">ID:</span>{{clientId}}<br>
+                    <span class="infolabel">Secret:</span>{{clientSecret}}<br>
+                    <span class="infolabel"></span><a href="/clients">more</a>
+                {{/apiClient}}
+                {{^apiClient}}
+                    <p>
+                        You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
+                    </p>
+                
+                    <a href="/clients" class="btn btn-primary">Create an API-Client</a>
+                {{/apiClient}}
+        </div>
+    </div>
+</div>-->
+{{> footer}}

@@ -1,0 +1,19 @@
+{{> header}}
+
+<div class="container">
+<br><br>
+    <div class="jumbotron">
+    <div class="container">
+    <h1>sipgate API console</h1>
+    <p>You can access our APIs using <a href="https://www.sipgatebasic.de/" target="_blank">a free sipgate basic account</a>.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button" id="login">login</a></p>
+    </div>
+</div>
+</div>
+<script>
+    $('#login').click(() => {
+        let url = "https://api.sipgate.com/v1/authorization/oauth/authorize?scope=all&response_type=code&client_id=OtL0MUtpf3&redirect_uri="+encodeURI('{{{redirect}}}')
+        document.location.href = url;
+    })
+</script>
+{{> footer}}

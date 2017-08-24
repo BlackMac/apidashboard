@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sipgate.io output</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js" integrity="sha256-KaSi3am04I2b10TZZ7JqEYrnNk94r0QOeIY3PtwGR/M=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {{{html}}}
+        <script>
+            var bearer="{{{bearer}}}"
+            var socketuri = "{{{socketuri}}}"
+            var pushuri = "{{{pushuri}}}"
+
+            var sipgate = {
+                _request: (method, url, data, callback) => {
+                    $.ajax("https://api.sipgate.com"+url, {
+                        type: method,
+                        headers: {  'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                    'Authorization': 'Bearer ' + bearer
+                        },
+                        data: (data ? JSON.stringify(data) : null)
+                    }).done((res) => {
+                        callback(res);
+                    })
+                },
+
+                onPush: (callback) => {
+                    sipgate.put("/v1/settings/sipgateio", {
+                        incomingUrl:pushuri,
+                        outgoingUrl:pushuri
+                    }, (result) => {
+                        console.log(result)
+                        var socket = io(socketuri)
+                        console.log("listening for pushes on "+pushuri)
+                        socket.on('sipgateio', (data) => {
+                            callback(data)
+                        }); 
+                    })
+
+                    
+                },
+
+                get: (url, callback) => {
+                    sipgate._request("GET", url, null, callback)
+                },
+
+                post: (url, data, callback) => {
+                    sipgate._request("POST", url, data, callback)
+                },
+
+                delete: (url, callback) => {
+                    sipgate._request("DELETE", url, null, callback)
+                },
+
+                put: (url, data, callback) => {
+                    sipgate._request("PUT", url, data, callback)
+                }
+            }
+        </script>
+        <script>
+            {{{script}}}
+        </script>
+    </body>
+</html>
