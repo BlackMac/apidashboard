@@ -15,7 +15,8 @@ function request(method, url, querydata, bearer) {
         }
         const headers = {
             'User-Agent':       'sipgate.io developer toolbox 0.0.1',
-            'Accept':           'application/json'
+            'Accept':           'application/json',
+            'Content-Type': 'application/json' 
         }
 
         if (!bearer) {
@@ -54,7 +55,7 @@ function request(method, url, querydata, bearer) {
             reject(e)
         });
 
-        if (method == "POST" ) {
+        if (querydata) {
             post_req.write(queryuri)
         }
         post_req.end();
@@ -71,6 +72,10 @@ function post(url, querydata, bearer) {
 
 function get(url, bearer) {
     return request("GET", url, null, bearer)
+}
+
+function put(url, querydata, bearer) {
+    return request("PUT", url, querydata, bearer)
 }
 
 exports.getClients = (bearer) => {
@@ -121,6 +126,14 @@ exports.getNumbers = (bearer) => {
 
 exports.getWebhookUrls = (bearer) => {
     return get('/v2/settings/sipgateio', bearer)
+}
+
+exports.setWebhookURLs = (incoming, outgoing, bearer) => {
+    const query = {
+        "incomingUrl": incoming,
+        "outgoingUrl": outgoing
+    }
+    return put('/v2/settings/sipgateio', query, bearer)
 }
 
 exports.getHistory = (bearer) => {

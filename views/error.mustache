@@ -6,10 +6,13 @@
         <div class="col-md-12"><br>
         <div class="panel panel-danger">
         <div class="panel-heading">
-            <h3 class="panel-title">Fehler</h3>
+            <h3 class="panel-title">Error</h3>
         </div>
         <div class="panel-body">
-        <div class="panel panel-default">
+
+            {{{errormessage}}}
+            {{^errormessage}}
+            <div class="panel panel-default">
             <div class="panel-body">
             <p>
                 An unknown Error occured. This should never happen, but in this case we forgot to write a user friendly error message.
@@ -18,12 +21,17 @@
                 We are very sorry about this incident and we will fix it ASAP. Our developers have been informed and we will send you
                 an email when we know more.
             </p>
+            
+            
+            {{/errormessage}}
             </div>
         </div>
-            
+            {{^errormessage}}
             <pre>{{error}}</pre>
+            </div>
         </div>
-        </div>
+            {{/errormessage}}
+            
         </div>
     </div>
 </div>
