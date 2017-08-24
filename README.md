@@ -1,4 +1,4 @@
-# sipgate.io sandbox server
+# sipgate.io dashboard service
 
 a simple developer dashboard for sipgate.io
 
@@ -8,6 +8,6 @@ If you do not want to install it on your own server you can use the hosted versi
 
 ```
 npm install
-node index.js
+CLIENT_ID=[YOUR_CLIENT_ID];CLIENT_SECRET=[YOUR_CLIENT_SECRET];node index.js
 ```
 
