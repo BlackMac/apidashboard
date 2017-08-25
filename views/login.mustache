@@ -1,16 +1,46 @@
 {{> header}}
-
-<div class="container">
-<br><br>
+<link rel="stylesheet" href="/static/bootstrap-social.css">
+<div class="container-fluid">
     <div class="jumbotron">
-    <div class="container">
-    <h1>sipgate API console</h1>
-    <p>You can access our APIs using <a href="https://www.sipgatebasic.de/" target="_blank">a free sipgate basic account</a>.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button" id="login">login</a></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>sipgate.io <small>dashboard</small></h1>
+                    <p>This is a dashboard for sipgate.io. You can use it with any existing sipgate basic, sipgate team or simquadrat account.
+                    </p>
+                    <p>
+                    If you are not a sipgate user yet get <a href="https://www.sipgatebasic.de/" target="_blank">a free sipgate basic account</a>.
+                    </p>
+                </div>
+                <div class="col-md-8 center-block">
+                    <img src="/static/screenshot.png" class="img-responsive">
+                </div>
+                <div class="row">
+                <div class="col-md-12 center-block text-center">
+                    <a class="btn btn-social btn-sipgate" href="#" role="button" id="login"><img src="/static/logo.png" class="btn-social-icon"></img> Sign in with sipgate.io</a>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-4 center-block text-center feature">
+        <i class="ti-panel"></i>
+        Manage OAuth Clients
+    </div>
+    <div class="col-md-4 center-block text-center feature">
+        <i class="ti-link"></i>
+        Configure Webhooks
+    </div>
+    <div class="col-md-4 center-block text-center feature">
+        <i class="ti-book"></i>
+        Learn to use sipgate.io
+    </div>
 </div>
 <script>
+
     $('#login').click(() => {
         let url = "https://api.sipgate.com/v1/authorization/oauth/authorize?scope=all&response_type=code&client_id=OtL0MUtpf3&redirect_uri="+encodeURI('{{{redirect}}}')
         document.location.href = url;

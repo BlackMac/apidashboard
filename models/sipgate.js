@@ -77,7 +77,7 @@ function request(method, url, querydata, bearer) {
         const headers = {
             'User-Agent':       'sipgate.io developer toolbox 0.0.1',
             'Accept':           'application/json',
-            'Content-Type': 'application/json' 
+            'Content-Type':     'application/json' 
         }
 
         if (!bearer) {

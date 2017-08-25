@@ -210,3 +210,19 @@ body {
 .infofooter.closed {
   height: 29px;
 }
+
+.feature {
+  font-size:22px;
+  font-weight: bold;
+}
+
+.feature i {
+  font-size: 90px;
+  display:block;
+  color:#999999;
+  padding:10px 0 30px;
+}
+
+.btn-social {
+  margin-top:40px;
+}
