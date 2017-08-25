@@ -3,6 +3,12 @@
         $(function () {
             $('[data-toggle="popover"]').popover()
         })
+
+         $(function () {
+            $('.footer-toggle').click(function(e) {
+                $(this.parentNode).toggleClass("closed");
+            })
+        })
         </script>
     </body>
 </html>

@@ -3,81 +3,119 @@
 <div class="container-fluid content">
     <div class="row">
         <div class="col-md-12">
-        <h3>Clients</h3>
-        <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Your clients</h3>
-        </div>
-        <div class="panel-body">
-            <ul class="list-group">
-            {{#clients}}
-                <li class="list-group-item">
-                <h4>{{name}}</h4>
-                <p>
-                {{description}}
-                </p>
-                <div class="row">
-                    <div class="col-md-5">
-                        <strong>Client ID:</strong> {{clientId}}<br>
-                        <strong>Client Secret:</strong> {{clientSecret}}
-                    </div>
-                    <div class="col-md-5">
-                        <strong>Redirect URIs:</strong> {{redirectUris}}<br>
-                        <strong>Web Origins:</strong> {{redirectUris}}<br>
-                    </div>
-                    <div class="col-md-2 text-right">
-                    <a class="btn btn-danger" href="/client/delete/{{clientId}}"><span class="ti-trash"></span> Delete</a>
-                    </div>
+            <h3>Clients</h3>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your clients</h3>
                 </div>
-                </li>
-            {{/clients}}
-            {{^clients}}
-            <p>
-                You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
-            </p>
-            {{/clients}}
-            </ul>
-        </div>
-        <div class="panel-footer">
-            API Calls we used in this box:<br><strong>GET</strong> /v2/authorization/oauth2/clients<br><strong>DELETE</strong> /v2/authorization/oauth2/clients/[CLIENT_ID]
-        </div>
-        </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                    {{#clients}}
+                        <li class="list-group-item">
+                        <h4>{{name}}</h4>
+                        <p>
+                        {{description}}
+                        </p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Client ID:</strong> {{clientId}}<br>
+                                <strong>Client Secret:</strong> {{clientSecret}}
+                            </div>
+                            <div class="col-md-5">
+                                <strong>Redirect URIs:</strong> {{redirectUris}}<br>
+                                <strong>Web Origins:</strong> {{redirectUris}}<br>
+                            </div>
+                            <div class="col-md-2 text-right">
+                            <a class="btn btn-danger" href="/client/delete/{{clientId}}"><span class="ti-trash"></span> Delete</a>
+                            </div>
+                        </div>
+                        </li>
+                    {{/clients}}
+                    {{^clients}}
+                    <p>
+                        You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
+                    </p>
+                    {{/clients}}
+                    </ul>
+                </div>
+                <div class="panel-footer infofooter closed"><a href="javascript:" class="footer-toggle"><i class="infolabel ti-info-alt"></i> About this Box</a><br>
+                    <p>
+                    <h4>API Calls used</h4>
+                    <strong>GET</strong> /v2/authorization/oauth2/clients<br>
+                    <strong>DELETE</strong> /v2/authorization/oauth2/clients/[CLIENT_ID]
+                    </p>
+                    <h4>What is a Client ID?</h4>
+                    <p>
+                    When you use the sipgate REST API or the sipgate.io phone you need a client ID to connect. The client ID is a public identifier for
+                    your app and can be included in client side applications like JavaScript frontends or desktop Apps.
+                    </p>
+                    <h4>What is a Client Secret?</h4>
+                    <p>
+                    A client secret is a key your application uses in the authentication process that verifies your application as genuine. It should
+                    <strong>never</strong> be included in an application that runs on the users device, because it would enable them to pretend to
+                    be your client. Only use the client secret in server side applications.
+                    </p>
+                    <h4>Why can't I set my Client ID or secret?</h4>
+                    <p>
+                    The client ID and secret need to be random and hard to guess, so we are generating them for you to make sure they are unique and
+                    random.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-        <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Create new client</h3>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="/client/add">
-                <div class="form-group">
-                    <label for="clientInputName">Client Name</label>
-                    <input type="text" class="form-control" id="clientInputName" name="clientInputName" placeholder="Name" required>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create new client</h3>
                 </div>
-                <div class="form-group">
-                    <label for="clientInputDescription">Client Description</label>
-                    <input type="text" class="form-control" id="clientInputDescription" name="clientInputDescription" placeholder="Description" required>
+                <div class="panel-body">
+                    <form method="post" action="/client/add">
+                        <div class="form-group">
+                            <label for="clientInputName">Client Name</label>
+                            <input type="text" class="form-control" id="clientInputName" name="clientInputName" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientInputDescription">Client Description</label>
+                            <input type="text" class="form-control" id="clientInputDescription" name="clientInputDescription" placeholder="Description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientInputRedirectUrls">Redirect URLs (comma separated)</label>
+                            <textarea class="form-control" id="clientInputRedirectUrls" name="clientInputRedirectUrls" placeholder="Redirect URLs" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientInputOriginUrls">Web Origin URLs (comma separated)</label>
+                            <textarea class="form-control" id="clientInputOriginUrls" name="clientInputOriginUrls" placeholder="Web Origin URLs" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">Add client</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="clientInputRedirectUrls">Redirect URLs (comma separated)</label>
-                    <textarea class="form-control" id="clientInputRedirectUrls" name="clientInputRedirectUrls" placeholder="Redirect URLs" required></textarea>
+                <div class="panel-footer infofooter closed"><a href="javascript:" class="footer-toggle"><i class="infolabel ti-info-alt"></i> About this Box</a><br>
+                    <p>
+                    <h4>API Calls used</h4>
+                    <strong>POST</strong> /v2/authorization/oauth2/clients
+                    </p>
+                    <h4>What client name should I chose?</h4>
+                    <p>
+                    The Client name will be used during login to tell the user which app requests Access to the account. Please use a name we can
+                    show to the users of your app.
+                    </p>
+                    <h4>What about the client description?</h4>
+                    <p>
+                    The description should also be user facing. Make sure we can also show it to the user of the App.
+                    </p>
+                    <h4>What are Redirect URLs good for?</h4>
+                    <p>
+                    ???
+                    </p>
+                    <h4>What is a web origin URL?</h4>
+                    <p>
+                    ???
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="clientInputOriginUrls">Web Origin URLs (comma separated)</label>
-                    <textarea class="form-control" id="clientInputOriginUrls" name="clientInputOriginUrls" placeholder="Web Origin URLs" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-default">Add client</button>
-            </form>
+            </div>
         </div>
-        <div class="panel-footer">
-            API Calls we used in this box:<br><strong>POST</strong> /v2/authorization/oauth2/clients
-        </div>
-        </div>
-        
-        </div>
-        
     </div>
 </div>
 {{> footer}}

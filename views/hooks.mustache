@@ -4,31 +4,34 @@
 <div class="container-fluid content">
     <div class="row">
         <div class="col-md-12">
-        <h3>Webhooks</h3>
-         <p>
-            You can build a small Webservice, enter it's URLs here and we will call it whenever a call is received or made.
-        </p>
-        <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Webhooks</h3>
-        </div>
-        <div class="panel-body">
-        <form method="post">
-            <div class="form-group">
-                <label for="hooksInputIncomingUrl">Incoming Call Webhook URL</label>
-                <input type="text" class="form-control" id="hooksInputIncomingUrl" name="hooksInputIncomingUrl" placeholder="https://" value="{{hooks.incomingUrl}}">
+            <h3>Webhooks</h3>
+            <p>
+                You can build a small Webservice, enter it's URLs here and we will call it whenever a call is received or made.
+            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Webhooks</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="hooksInputIncomingUrl">Incoming Call Webhook URL</label>
+                            <input type="text" class="form-control" id="hooksInputIncomingUrl" name="hooksInputIncomingUrl" placeholder="https://" value="{{hooks.incomingUrl}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="hooksInputOutgoingUrl">Outgoing Call Webhook URL</label>
+                            <input type="text" class="form-control" id="hooksInputOutgoingUrl" name ="hooksInputOutgoingUrl" placeholder="https://" value="{{hooks.outgoingUrl}}">
+                        </div>
+                        <button type="submit" class="btn btn-default">Update Webhook URLs</button>
+                    </form>
+                </div>
+                <div class="panel-footer infofooter closed"><a href="javascript:" class="footer-toggle"><i class="infolabel ti-info-alt"></i> About this Box</a><br>
+                    <p>
+                    <h4>API Calls used</h4>
+                    <strong>GET</strong> /v2/settings/sipgateio<br><strong>PUT</strong> /v2/settings/sipgateio
+                    </p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="hooksInputOutgoingUrl">Outgoing Call Webhook URL</label>
-                <input type="text" class="form-control" id="hooksInputOutgoingUrl" name ="hooksInputOutgoingUrl" placeholder="https://" value="{{hooks.outgoingUrl}}">
-            </div>
-            <button type="submit" class="btn btn-success">Update Webhook URLs</button>
-        </form>
-        </div>
-        <div class="panel-footer">
-            API Calls we used in this box:<br><strong>GET</strong> /v2/settings/sipgateio<br><strong>PUT</strong> /v2/settings/sipgateio
-        </div>
-        </div>
         </div>
     </div>
 </div>

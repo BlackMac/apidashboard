@@ -183,23 +183,30 @@ body {
 }
 
 
-  .infolabel {
-    display:inline-block;
-    width:120px;
-    color: #666666;
-    font-weight: bold;
-    text-align: right;
-    padding-right: 20px;
-  }
+.infolabel {
+  display:inline-block;
+  color: #666666;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 0px;
+}
+
 .apiinfo {
   float: right;
   margin-top:2px;
 }
 
 .panel-footer {
-  font-size:0.7em;
-  font-family: monaco, fixed;
-  color: #999999;
+  font-size:0.9em;
+  color: #444444;
   padding: 5px 15px;
   overflow:hidden;
+}
+
+.panel-footer i {
+  color: inherit;
+}
+
+.infofooter.closed {
+  height: 29px;
 }
