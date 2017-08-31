@@ -4,10 +4,34 @@
 <div class="container-fluid content">
     <div class="row">
         <div class="col-md-12">
-            <h3>Webhooks</h3>
+            <h3>Webhooks with multiple Endpoints</h3>
             <p>
-                You can build a small Webservice, enter it's URLs here and we will call it whenever a call is received or made.
+                Need multiple Endpoints for sipgate.io? This bridge pipes a single call to multiple endpoints.
             </p>
+            <p>
+                sipgate.io will push to the master endpoint on this page, which then verteilt the push to all other endpoints.
+                The control endpoint can return XML (for IVRs, play and more) while all other URL can only receive the push.
+            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">API Endpoint</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                    {{hookUrl}} {{#masterActive}}<span class="label label-success">enabled</span>{{/masterActive}}{{^masterActive}}<span class="label label-danger">disabled</span>{{/masterActive}} <span class="infolabel single">
+                    </p>
+                    {{^masterActive}}<p>
+                    <a href="/hooks/multi/enable" class="btn btn-default">Enable</a>
+                    </p>{{/masterActive}}
+                </div>
+                <div class="panel-footer infofooter closed"><a href="javascript:" class="footer-toggle"><i class="ti-info-alt"></i> About this Box</a><br>
+                    <p>
+                    <h4>API Calls used</h4>
+                    <strong>GET</strong> /v2/settings/sipgateio<br><strong>PUT</strong> /v2/settings/sipgateio
+                    </p>
+                </div>
+            </div>
+            {{#masterActive}}
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Webhooks</h3>
@@ -32,6 +56,7 @@
                     </p>
                 </div>
             </div>
+            {{/masterActive}}
         </div>
     </div>
 </div>

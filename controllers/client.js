@@ -15,8 +15,8 @@ exports.get = (req, res) => {
  exports.post = (req, res) => {
      let name = req.body.clientInputName
      let description = req.body.clientInputDescription
-     let redirectUrls = req.body.clientInputRedirectUrls
-     let originUrls = req.body.clientInputOriginUrls
+     let redirectUrls = req.body.clientInputRedirectUrls.split(",")
+     let originUrls = req.body.clientInputOriginUrls.split(",")
 
      sipgate.createClient(name, description, redirectUrls, originUrls, req.session.bearer).then(() => {
         res.redirect("/clients")

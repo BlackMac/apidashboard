@@ -14,6 +14,8 @@ module.exports = (app) => {
     app.get('/numbers', authMiddleware, numbersController.get)
     app.get('/hooks', authMiddleware, hooksController.get)
     app.post('/hooks', authMiddleware, hooksController.post)
+    app.get('/hooks/multi', authMiddleware, hooksController.getMulti)
+    app.get('/hooks/multi/enable', authMiddleware, hooksController.enableMulti)
     app.get('/phone', authMiddleware, phoneController.get)
     app.get('/login', loginController.get)
     app.get('/login/oauth', loginController.authenticate)

@@ -15,6 +15,7 @@ exports.authenticate = (req, res) => {
         req.session.bearer = clientdata.access_token
         sipgate.getUserInfo(req.session.bearer).then((userinfo) => {
             req.session.webuserid=userinfo.sub
+            req.session.masterSipId=userinfo.masterSipId
             sipgate.getUserDetails(userinfo.sub, req.session.bearer).then((userdetails) => {
                 req.session.userdetails = userdetails
                 req.session.userdetails.gravatar = md5(req.session.userdetails.email);

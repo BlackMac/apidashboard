@@ -20,11 +20,16 @@
                 <i class="ti-headphone-alt"></i>Phone
                 </li>
                 </a>
-                <a href="/hooks">
-                <li class="{{#pageHooks}}active{{/pageHooks}}">
-                <i class="ti-link"></i>Webhooks
+                <a href="#">
+                <li  data-toggle="collapse" data-target="#products" class="{{^pageHooks}}collapsed{{/pageHooks}} {{#pageHooks}}active{{/pageHooks}}">
+                  <i class="ti-link"></i>Webhooks <span class="arrow"></span>
                 </li>
                 </a>
+                <ul class="sub-menu {{^pageHooks}}collapse{{/pageHooks}}" id="products">
+                    <a href="/hooks"><li class="{{#pageHooksConfiguration}}active{{/pageHooksConfiguration}}">Configuration</li></a>
+                    <a href="/hooks/multi"><li class="{{#pageHooksMultipush}}active{{/pageHooksMultipush}}">Multipush</li></a>
+                </ul>
+
                 <a href="/login">
                 <li class="{{#pageLogin}}active{{/pageLogin}}">
                 <i class="ti-power-off text-danger"></i>Logout
