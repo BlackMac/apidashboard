@@ -1,9 +1,10 @@
 const sipgate = require('../models/sipgate')
+const config = require('../config')
 const errorhandler = require("../helpers/errorhandler")
 const md5 = require("js-md5")
 exports.get = (req, res) => {
     req.session.bearer = null
-    res.render('login', { token: req.sandbox.id, redirect: 'https://' + req.get('host')+"/login/oauth" })
+    res.render('login', { token: req.sandbox.id, client_id: config.client_id, redirect: 'https://' + req.get('host')+"/login/oauth" })
 }
 
 exports.authenticate = (req, res) => {

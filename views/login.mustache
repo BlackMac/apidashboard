@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h1>sipgate.io <small>dashboard</small></h1>
+                    <h1>sipgate.io <small>developer tools</small></h1>
                     <p>This is a dashboard for sipgate.io. You can use it with any existing sipgate basic, sipgate team or simquadrat account.
                     </p>
                     <p>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
                 <div class="col-md-12 center-block text-center">
-                    <a class="btn btn-social btn-sipgate" href="#" role="button" id="login"><img src="/static/logo.png" class="btn-social-icon"></img> Sign in with sipgate.io</a>
+                    <a class="btn btn-social btn-sipgate" href="#" role="button" id="login"><img src="/static/logo.png" class="btn-social-icon"></img> Sign in with sipgate</a>
                 </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
 <script>
 
     $('#login').click(() => {
-        let url = "https://api.sipgate.com/v1/authorization/oauth/authorize?scope=all&response_type=code&client_id=OtL0MUtpf3&redirect_uri="+encodeURI('{{{redirect}}}')
+        let url = "https://api.sipgate.com/v1/authorization/oauth/authorize?scope=all&response_type=code&client_id={{client_id}}&redirect_uri="+encodeURI('{{{redirect}}}')
         document.location.href = url;
     })
 </script>
