@@ -15,7 +15,7 @@ exports.getToken = (code, redirectUri) => {
         redirect_uri: redirectUri
     };
 
-    return post('/v1/authorization/oauth/token', query)
+    return post('/login/third-party/protocol/openid-connect/token', query)
 }
 
 exports.createClient = (name, description, redirectUrls, originUrls, bearer) => {
@@ -77,7 +77,7 @@ function request(method, url, querydata, bearer) {
         const headers = {
             'User-Agent':       'sipgate.io developer toolbox 0.0.1',
             'Accept':           'application/json',
-            'Content-Type':     'application/json' 
+            'Content-Type':     'application/json'
         }
 
         if (!bearer) {
