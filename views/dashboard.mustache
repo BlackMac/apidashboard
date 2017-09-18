@@ -19,16 +19,16 @@
                 </div>
                 <div class="panel-body">
                 {{#apiClient}}
-                    <span class="infolabel">Client: </span>{{name}}<br>
-                    <span class="infolabel">ID: </span>{{clientId}}<br>
-                    <span class="infolabel">Secret: </span>{{clientSecret}}<br>
+                    <span class="infolabel">Client:</span> {{name}}<br>
+                    <span class="infolabel">ID:</span> {{clientId}}<br>
+                    <span class="infolabel">Secret:</span> {{clientSecret}}<br>
                     <span class="infolabel"></span><a href="/clients">more</a>
                 {{/apiClient}}
                 {{^apiClient}}
                     <p>
                         You don't have an API Client yet. You must first create one to use the sipgate.io REST API and the sipgate.io phone.
                     </p>
-                
+
                     <a href="/clients" class="btn btn-primary">Create an API-Client</a>
                 {{/apiClient}}
                 </div>
