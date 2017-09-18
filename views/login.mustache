@@ -42,7 +42,7 @@
 <script>
 
     $('#login').click(() => {
-        let url = "https://api.sipgate.com/v1/authorization/oauth/authorize?scope=all&response_type=code&client_id={{client_id}}&redirect_uri="+encodeURI('{{{redirect}}}')
+        let url = "https://api.sipgate.com/login/third-party/protocol/openid-connect/auth?scope=all&response_type=code&client_id={{client_id}}&redirect_uri="+encodeURI('{{{redirect}}}')
         document.location.href = url;
     })
 </script>
