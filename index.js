@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.engine('mustache', mustacheExpress())
 app.set('view engine', 'mustache')
 app.disable('view cache')
-
+app.enable('trust proxy');
 
 router(app)
 
