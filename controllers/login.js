@@ -4,13 +4,13 @@ const errorhandler = require("../helpers/errorhandler")
 const md5 = require("js-md5")
 exports.get = (req, res) => {
     req.session.bearer = null
-    res.render('login', { token: req.sandbox.id, client_id: config.client_id, redirect: 'https://' + req.get('host')+"/login/oauth" })
+    res.render('login', { token: req.sandbox.id, client_id: config.client_id, redirect: req.protocol + '://' + req.get('host')+"/login/oauth" })
 }
 
 exports.authenticate = (req, res) => {
     const code = req.query.code || null
 
-    const redirectUri = 'https://' + req.get('host') + "/login/oauth"
+    const redirectUri = req.protocol + '://' + req.get('host') + "/login/oauth"
 
     sipgate.getToken(code, redirectUri).then((clientdata) => {
         req.session.bearer = clientdata.access_token
@@ -20,7 +20,7 @@ exports.authenticate = (req, res) => {
             sipgate.getUserDetails(userinfo.sub, req.session.bearer).then((userdetails) => {
                 req.session.userdetails = userdetails
                 req.session.userdetails.gravatar = md5(req.session.userdetails.email);
-                res.redirect('https://' + req.get('host') + '/')
+                res.redirect(req.protocol + '://' + req.get('host') + '/')
             })
         })
     }).catch(errorhandler.api.bind(null, req, res))

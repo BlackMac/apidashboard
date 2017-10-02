@@ -32,7 +32,7 @@ exports.post = (req, res) => {
 
 exports.getMulti = (req, res) => {
     sipgate.getWebhookUrls(req.session.bearer).then((hookinfo) => {
-        let hookEndpoint = 'https://' + req.get('host') + "/multipush/" + md5(config.push_salt+req.session.masterSipId)
+        let hookEndpoint = req.protocol + '://' + req.get('host') + "/multipush/" + md5(config.push_salt+req.session.masterSipId)
         let masterActive = false
         if (hookinfo.incomingUrl === hookEndpoint && hookinfo.outgoingUrl === hookEndpoint) masterActive = true
         res.render('hooksmulti', {
@@ -51,12 +51,12 @@ exports.enableMulti = (req, res) => {
     .then((hookinfo) => {
         storage.setItem(md5(config.push_salt+req.session.masterSipId),{control: hookinfo}).then(() => {
             storage.getItem(md5(config.push_salt+req.session.masterSipId)).then((item) => {
-                let hookEndpoint = 'https://' + req.get('host') + "/multipush/" + md5(config.push_salt+req.session.masterSipId)
+                let hookEndpoint = req.protocol + '://' + req.get('host') + "/multipush/" + md5(config.push_salt+req.session.masterSipId)
                 sipgate.setWebhookURLs(hookEndpoint, hookEndpoint, req.session.bearer).then(() => {
                     res.redirect("/hooks/multi")
                 })
             })
         })
-        
+
     }))
 }
