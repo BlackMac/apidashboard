@@ -1,7 +1,7 @@
 <div class="nav-side-menu">
-    <div class="brand"><img src="/static/logo.png" style="width:32px; margin: 13px;"></div>
+    <div class="brand">io::dash<!--<img src="/static/logo.png" style="width:32px; margin: 13px;">--></div>
     <i class="glyphicon glyphicon-menu-hamburger toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-        
+
         <div class="menu-list">
 
             <ul id="menu-content" class="menu-content collapse out">
@@ -20,7 +20,12 @@
                 <i class="ti-headphone-alt"></i>Phone
                 </li>
                 </a>
-                <a href="#">
+                <a href="/hooks">
+                <li class="{{#pageHooks}}active{{/pageHooks}}">
+                <i class="ti-link"></i>Webhooks
+                </li>
+                </a>
+              <!--<a href="#">
                 <li  data-toggle="collapse" data-target="#products" class="{{^pageHooks}}collapsed{{/pageHooks}} {{#pageHooks}}active{{/pageHooks}}">
                   <i class="ti-link"></i>Webhooks <span class="arrow"></span>
                 </li>
@@ -29,7 +34,7 @@
                     <a href="/hooks"><li class="{{#pageHooksConfiguration}}active{{/pageHooksConfiguration}}">Configuration</li></a>
                     <a href="/hooks/multi"><li class="{{#pageHooksMultipush}}active{{/pageHooksMultipush}}">Multipush</li></a>
                 </ul>
-
+              -->
                 <a href="/login">
                 <li class="{{#pageLogin}}active{{/pageLogin}}">
                 <i class="ti-power-off text-danger"></i>Logout
@@ -41,4 +46,3 @@
         <img src="https://www.gravatar.com/avatar/{{user.gravatar}}" class="img-circle">{{user.firstname}} {{user.lastname}}<br>
     </div>
 </div>
-    

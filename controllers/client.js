@@ -4,7 +4,7 @@ const errorhandler = require("../helpers/errorhandler")
 
 exports.get = (req, res) => {
     sipgate.getClients(req.session.bearer).then((result) => {
-        res.render('edit', {
+        res.render('clients', {
             clients: result.data,
             pageClients: true,
             user:req.session.userdetails
@@ -21,7 +21,7 @@ exports.get = (req, res) => {
      sipgate.createClient(name, description, redirectUrls, originUrls, req.session.bearer).then(() => {
         res.redirect("/clients")
      }).catch(errorhandler.api.bind(null, req, res))
-     
+
  }
 
  exports.delete = (req, res) => {
