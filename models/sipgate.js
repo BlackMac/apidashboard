@@ -60,6 +60,10 @@ exports.setWebhookURLs = (incoming, outgoing, bearer) => {
     return put('/v2/settings/sipgateio', query, bearer)
 }
 
+exports.getOpenCalls = (bearer) => {
+    return get('/v2/calls', bearer)
+}
+
 exports.getHistory = (bearer) => {
     return get('/v2/w3/history?offset=0&limit=1000', bearer)
 }

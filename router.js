@@ -4,6 +4,7 @@ const clientController = require("./controllers/client"),
       dashboardController = require("./controllers/dashboard"),
       phoneController = require("./controllers/phone"),
       hooksController = require("./controllers/hooks"),
+      statusController = require("./controllers/status"),
       numbersController = require("./controllers/numbers"),
       authMiddleware = require('./middleware/auth'),
       domainMiddleware = require('./middleware/domain')
@@ -17,6 +18,7 @@ module.exports = (app) => {
     app.get('/hooks/multi', authMiddleware, hooksController.getMulti)
     app.get('/hooks/multi/enable', authMiddleware, hooksController.enableMulti)
     app.get('/phone', authMiddleware, phoneController.get)
+    app.get('/status', authMiddleware, statusController.get)
     app.get('/login', loginController.get)
     app.get('/login/oauth', loginController.authenticate)
     app.get('/static/:filename', staticController.get)
