@@ -1,0 +1,38 @@
+{{> header}}
+{{> menu}}
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>sipgate.io phone</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default {{^apiClient}}panel-danger{{/apiClient}}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">RTCM status</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    {{#calls}}
+                      <li>
+                        {{#participants}}
+                          {{participantId}}: {{phoneNumber}}
+                        {{/participants}}
+                      </li>
+                    {{/calls}}
+                  </ul>
+                </div>
+                 <div class="panel-footer infofooter closed"><a href="javascript:" class="footer-toggle"><i class="ti-info-alt"></i> About this Box</a><br>
+                    <p>
+                    <h4>API Calls used</h4>
+                    <strong>GET</strong> /v2/authorization/oauth2/clients
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/static/prism.css">
+<script src="/static/prism.js"></script>
+{{> footer}}
